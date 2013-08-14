@@ -1781,7 +1781,8 @@ Date.prototype.print = function (str) {
 	var a = str.match(re);
 	for (var i = 0; i < a.length; i++) {
 		var tmp = s[a[i]];
-		if (tmp) {
+		//FIXME: Fucked fix for Chrome on hour 0:00
+		if (tmp || tmp == 0) {
 			re = new RegExp(a[i], 'g');
 			str = str.replace(re, tmp);
 		}
